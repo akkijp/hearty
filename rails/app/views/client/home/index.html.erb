@@ -1,0 +1,26 @@
+<h1 class="text-4xl">TOP</h1>
+<p>ログイン状態: <%= logged_in? %></p>
+
+
+<h1 class="text-2xl mt-8">会員登録・ログイン・ログアウト</h1>
+<div class="flex justify-left align-center space-x-4">
+  <%= link_to auth_at_provider_path(provider: :slack), class: tailwind_button_class(:md) do %>
+    <i class="fab fa-slack-f"></i> Slackログイン
+  <% end %>
+
+  <%= link_to logout_path, class: tailwind_button_class(:md), data: { turbo_method: :delete } do %>
+    ログアウト
+  <% end %>
+</div>
+
+
+<%= link_to '会員登録ページヘ', signup_path %>
+<%= link_to 'ログインページヘ', login_path %>
+
+
+
+<a href="https://buy.stripe.com/test_cN28A42uGgIGfio7ss">Stripe有料商品</a>
+
+
+<h1 class="text-2xl mt-8">Slack連携</h1>
+<a href="https://slack.com/oauth/v2/authorize?client_id=3637899007283.4082928579383&scope=chat:write,commands,channels:read,channels:history,groups:history,im:history,incoming-webhook&user_scope=chat:write,channels:history,groups:history,im:history"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>

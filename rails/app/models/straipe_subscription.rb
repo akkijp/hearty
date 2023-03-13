@@ -1,0 +1,2 @@
+class StraipeSubscription < ApplicationRecord
+end

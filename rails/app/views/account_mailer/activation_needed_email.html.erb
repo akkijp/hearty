@@ -1,0 +1,10 @@
+<% url = users_auth_registration_activate_url(@account.activation_token) %>
+<%= render 'header' %>
+
+<p>ご登録手続き誠にありがとうございます。
+<br/>まだ登録は完了していません。</p>
+
+<p>メールアドレスの認証を完了させてください。
+<br/><%= link_to url, url %></p>
+
+<%= render 'footer' %>

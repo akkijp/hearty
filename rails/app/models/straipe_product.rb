@@ -1,0 +1,2 @@
+class StraipeProduct < ApplicationRecord
+end

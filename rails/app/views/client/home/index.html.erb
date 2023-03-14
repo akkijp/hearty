@@ -13,6 +13,10 @@
   <% end %>
 </div>
 
+<%= link_to 'Login with Google', auth_at_provider_path(provider: :google) %>
+<br>
+<%= link_to 'Login with Line', auth_at_provider_path(provider: :line) %>
+
 
 <%= link_to '会員登録ページヘ', signup_path %>
 <%= link_to 'ログインページヘ', login_path %>

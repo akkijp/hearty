@@ -11,7 +11,7 @@ Rails.application.config.sorcery.submodules = [
   :external
 ]
 
-OAUTH_CALLBACK_DOMAIN = "akki.jp.ngrok.io"
+OAUTH_CALLBACK_DOMAIN = "akkiline.jp.ngrok.io"
 
 # module Sorcery
 #   module Providers
@@ -109,7 +109,7 @@ Rails.application.config.sorcery.configure do |config|
   # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack, :line].
   # Default: `[]`
   #
-  config.external_providers = [:slack]
+  config.external_providers = [:slack, :line]
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -252,10 +252,41 @@ Rails.application.config.sorcery.configure do |config|
   # config.salesforce.scope = "full"
   # config.salesforce.user_info_mapping = {:email => "email"}
 
-  # config.line.key = ""
-  # config.line.secret = ""
-  # config.line.callback_url = "http://mydomain.com:3000/oauth/callback?provider=line"
-  # config.line.scope = "profile"
+
+
+  # === private key ===
+  # {
+  #   "alg": "RS256",
+  #   "d": "Ciq9vMBT5YWwHPPIc7Mbth3IKLQZcq53MdeKblr7xgMqx6JJtDk2fR2NJx7nY4XqiLLppCL5EPZmlQormMT_ZvJZv03O9hjo-KriF1mKy7iq1Ph9Bp55c9xRkDD9HKoOHi-FO2kIWjhxwspE1WPNnabOQ-eQdcFLDHobwWuJ3_zyCvEemJ9c2ha_UaaYunsl-3AaqqZ2FKZ_rpsz3ZvJE9J1pXFEpIwKHean2V4wuThm6mDVZwHi-DgE-NlK0H7zgbtEkq_gpyE_8pQfvjC4LtLIyJuTmaWsiPwYuRtvEVKW52Y2p60wE9aZp_H3P0v4W9zTwYHh5TXGoRy_ftPI8Q",
+  #   "dp": "A7iJxL3SD15gCQ5LsJqt7tp65rib5n0HjNNTV3AOnwJbIgLgGH4BwgelYWu8wf3G5ebmHPkzPfuqfdjhUVOwzkbpaZcCHkGhoPkblg_69exEpMNhYkRJvCBSrXFMYhcrIO1yFtw2CY8lrY1Eb9UHRz4DL-4NPK_1hV4SMsaoMDk",
+  #   "dq": "fdKA156OYXcH2HqaEd7nlvyf8AKhjNStPHr4Hiv5eGK1yUs6nF3AQbeItzy2gi0zPXsLEahasMFXpuPLskeuohwaCv2wDxDkMmT2l-OgqkvEM4t2LYiFkOF9mxPy7RqPBmt0fw23X-x7JroBkQtQXOLESY4HdvzF1M7e4ePE2Xs",
+  #   "e": "AQAB",
+  #   "ext": true,
+  #   "key_ops": [
+  #     "sign"
+  #   ],
+  #   "kty": "RSA",
+  #   "n": "k0BR5CtCd3ZG3hsfQaiAm1M8nmxnzU3lbWZ41mJycz0zsqqXbCp4orX1g-DprVydps6hLwxYQLDwhgLdX3mWp6xPElySLvMa2Vnwn_jhPQN7e1nInptbnPtFjxu9G_URm7q4Qm78ZL9yhS2iaAUmCznCCNDk3L11CjE7qNXP4oU6BOmDv4l_Q8Cjd3-QnQoxTUOjmYQsEZw65dW9Pb6kG9MW55afNdh3pSyAwC-shRNbq1VoTwsBkxgxlJg0r0iUJPrYTy6ZF1syxx2CI08ViatxUsRYqNlswZZ_-j51G1zgImnJvLTNxVllEjc79FxUWVM5azTYLgGgll2MV_iAxw",
+  #   "p": "zW_SjdJzbJNju30Imu43HFeCTtRaYvovaoOYNjgWOnEKpaLajYBgoMLWmxeL6UEbwIyetJVKOtuneGyEd0RlW5lGM2uOZixnOHLbX3K9xL168ELjq9Fqah8608hR0pzW0-lbucGmO1lWomM0pRZ0FrVBVeNaF_tM2U6gNauqWmk",
+  #   "q": "t35WaCowaPCKie3L-EfsHkL5gPgEPDbngWZR-xE4BE7DJ46utnbqI5pFux0C6oFJdjBviyutisxRJNNQPLjqzT3fK8P5n8RRb0dMeHBiykoDYT6zddagRsTyLXTX3Kqr06YfxGc8hkHEjpqqJwEHF-pEtt_ZM1J2jjPqykdqu68",
+  #   "qi": "xhCn3PYiTXTVKxQnxo3Q4n0jynUy77KPYxTLitnZNNENRlMAQhrPXj6b3OKcx-JKQuZpn07DmAUf7hsvC-9E9f9sPNU0QtDP-ibdh3eGjB8wJaXwGtj94tydx718pO1fPB68XazjfdIczx3XAeK1LKJD7iBCwQ_Oo22O-gY2pPA"
+  # }
+  # === public key ===
+  # {
+  #   "alg": "RS256",
+  #   "e": "AQAB",
+  #   "ext": true,
+  #   "key_ops": [
+  #     "verify"
+  #   ],
+  #   "kty": "RSA",
+  #   "n": "k0BR5CtCd3ZG3hsfQaiAm1M8nmxnzU3lbWZ41mJycz0zsqqXbCp4orX1g-DprVydps6hLwxYQLDwhgLdX3mWp6xPElySLvMa2Vnwn_jhPQN7e1nInptbnPtFjxu9G_URm7q4Qm78ZL9yhS2iaAUmCznCCNDk3L11CjE7qNXP4oU6BOmDv4l_Q8Cjd3-QnQoxTUOjmYQsEZw65dW9Pb6kG9MW55afNdh3pSyAwC-shRNbq1VoTwsBkxgxlJg0r0iUJPrYTy6ZF1syxx2CI08ViatxUsRYqNlswZZ_-j51G1zgImnJvLTNxVllEjc79FxUWVM5azTYLgGgll2MV_iAxw"
+  # }
+  # kid: 61dbf35e-4b3a-46e4-9008-e3e460b1094d
+  config.line.key = "1660737936"
+  config.line.secret = "2f79ab35efd6b1594a7029ff7e62556e"
+  config.line.callback_url = "https://#{OAUTH_CALLBACK_DOMAIN}/oauth/callback?provider=line"
+  config.line.scope = "openid"
   # config.line.bot_prompt = "normal"
   # config.line.user_info_mapping = {name: 'displayName'}
 

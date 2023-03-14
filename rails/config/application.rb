@@ -55,6 +55,7 @@ module Hearty
     ###
 
     config.hosts << "akki.jp.ngrok.io"
+    config.hosts << "akkiline.jp.ngrok.io"
 
   end
 end
